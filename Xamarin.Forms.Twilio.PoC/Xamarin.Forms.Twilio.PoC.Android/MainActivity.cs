@@ -9,11 +9,12 @@ using Android;
 using Android.Content;
 using Xamarin.Forms.Twilio.PoC.Helper;
 using System.Collections.Generic;
+using static Com.Twilio.Client.Twilio;
 
 namespace Xamarin.Forms.Twilio.PoC.Droid
 {
     [Activity(Label = "Xamarin.Forms.Twilio.PoC", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, IInitListener
     {
         public Com.Twilio.Client.Device _device;
         public IConnection _connection;

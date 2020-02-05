@@ -67,6 +67,9 @@ namespace Xamarin.Forms.Twilio.PoC.Droid
                 if (item == Manifest.Permission.RecordAudio && grantResults[i] == Permission.Granted)
                 {
                     isMicrophoneGranted = true;
+
+                    Com.Twilio.Client.Twilio.Initialize(this.ApplicationContext, this);
+
                     break;
                 }
 
@@ -121,7 +124,7 @@ namespace Xamarin.Forms.Twilio.PoC.Droid
         private void MainActivity_OnPhoneCall(object sender, TwilioEventArgs e)
         {
             var parameters = new Dictionary<string, string>() {
-                { "ClaraCallId", e.CallID }
+                { "CallId", e.CallID }
             };
 
             if (_device != null)

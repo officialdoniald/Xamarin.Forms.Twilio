@@ -16,6 +16,10 @@ namespace Xamarin.Forms.Twilio.PoC.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+            _device = new TCDevice("YOUR TWILIO TOKEN", null);
+
+            SetupDeviceEvents();
+
             GlobalEvents.OnPhoneCall += MainActivity_OnPhoneCall;
             GlobalEvents.OnPhoneHangout += MainActivity_OnPhoneHangout;
             GlobalEvents.OnMute += GlobalEvents_OnMute;
@@ -32,7 +36,7 @@ namespace Xamarin.Forms.Twilio.PoC.iOS
 
             NSDictionary parameters = NSDictionary.FromObjectsAndKeys(
                 new object[] { e.CallID },
-                new object[] { "ClaraCallId" }
+                new object[] { "CallId" }
             );
 
             _connection = _device.Connect(parameters, null);
